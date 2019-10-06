@@ -1,0 +1,26 @@
+#include <IRremote.h>
+
+int RECV_PIN=4;
+IRrecv irrecv(RECV_PIN);
+decode_results decodedSignal;
+
+void setup(){
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+}
+void loop(){
+  char tt;
+  if(irrecv.decode(&decodedSignal)==true){
+    if(decodedSignal.value==0xFFA25D) {Serial.println("A");tt='A';}
+    else if(decodedSignal.value==0xFF629D) {Serial.println("B");tt='B';}
+    else if(decodedSignal.value==0xFFE21D) {Serial.println("C");tt='C';}
+    else if(decodedSignal.value==0xFF22DD) Serial.println("D");
+    else if(decodedSignal.value==0xFFC23D) Serial.println("E");
+    //Serial.println(decodedSignal.value,HEX);
+    irrecv.resume();
+  }
+  else{
+    Serial.println(tt);
+  }
+  
+}
