@@ -1,0 +1,15 @@
+if(조도 < x && 습도 > y){
+	LED 흰색
+	if(생명체일 경우){
+		LED 초록
+		초음파로 거리 측정
+		if(거리 < 10) LED 레드
+		else if(거리 >=10 && 거리 < 30) LED 노랑
+		IR값 입력
+		if(IR == 차량 브레이크에 해당 값) {
+			레드, 노랑 LED off
+			후미등 LED on
+		}
+		else continue;
+	}
+}
